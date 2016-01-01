@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>data-*</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="js/jquery-1.11.3.min.js"></script>
+    </head>
+    <body>
+
+        <h1>HTML5's data attribute</h1>
+        <h4>Syntax :  Any attribute on any element whose attribute name starts with data- is a data attribute.</h4>
+        <p>Html5 has an awesome attribute to add custom data to any tag element.</p>
+        <p>These tag data is private and has nothing to with servers and requests.</p>
+
+        <p>
+            This is to store some extra information that doesn’t have any visual representation.
+        </p>
+
+        <p> More info at</p>
+        <ul>
+            <li> <a href="https://developer.mozilla.org/en/docs/Web/Guide/HTML/Using_data_attributes">
+                    Using data attributes (Mozilla Developer Network)
+                </a> </li>
+            <li> <a href="http://www.sitepoint.com/use-html5-data-attributes/">
+                    How to Use HTML5 Data Attributes (sitepoint)
+                </a> </li>
+        </ul>
+
+
+        <div id="msglist" data-user="bob" data-list-size="5" data-maxage="180">
+
+        </div>
+
+        <!--  JavaScript Parsing #1: getAttribute and setAttribute-->
+        <script>
+            var msglist = document.getElementById("msglist");
+            var show = msglist.getAttribute("data-list-size");
+            console.log("Before: " + show);
+            msglist.setAttribute("data-list-size", "hello");
+            show = msglist.getAttribute("data-list-size");
+            console.log("After: " + show);
+        </script>
+
+        <!--        JavaScript Parsing #2: jQuery data() method-->
+        <script>
+            var msglist = $("#msglist");
+            var show = msglist.data("list-size");
+            msglist.data("list-size", show + 3);
+            show = msglist.data("list-size");
+            console.log(show);
+        </script>
+
+
+        <!-- JavaScript Parsing #3: the dataset API-->
+        <script>
+            var msglist = document.getElementById("msglist");
+            var show = msglist.dataset.listSize;
+            msglist.dataset.listSize = +show + 3;
+        </script>
+
+    </body>
+</html>
